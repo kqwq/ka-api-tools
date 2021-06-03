@@ -1,7 +1,9 @@
+import fetch from "node-fetch"
+
 class KAClient {
   KAAS: string;
-  constructor(KAAS: string) {
-    this.KAAS = KAAS;
+  constructor(KAAS?: string) {
+    this.KAAS = KAAS || "";
   }
 
   /**
@@ -12,7 +14,6 @@ class KAClient {
     let res = await fetch(
       "https://www.khanacademy.org/api/internal/graphql/loginWithPasswordMutation",
       {
-        credentials: "include",
         headers: {
           "content-type": "application/json",
           "x-ka-fkey": "none",
@@ -28,7 +29,6 @@ class KAClient {
           },
         }),
         method: "POST",
-        mode: "cors",
       }
     );
 
@@ -74,3 +74,5 @@ export interface Comment {
    */
   downVoted: boolean;
 }
+
+export { KAClient }
