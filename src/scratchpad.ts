@@ -1,0 +1,4 @@
+interface scratchpad{
+    url:string;
+    
+}
